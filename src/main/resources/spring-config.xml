@@ -69,7 +69,7 @@
             </props>
         </property>
         <!--指定hibernate实体类包-->
-        <property name="packagesToScan" value="com.manchey.model"/>
+        <property name="packagesToScan" value="com.manchey.model.po"/>
     </bean>
 
     <!--注册事务管理器-->
@@ -89,6 +89,7 @@
             <tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="load*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="search*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="check*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
         </tx:attributes>
     </tx:advice>
     
@@ -100,5 +101,11 @@
 
     <!--自动扫描包，自动注入-->
     <context:component-scan base-package="com.manchey.dao, com.manchey.service"/>
+
+    <aop:aspectj-autoproxy />
+
+
+    <!--service-->
+
 
 </beans>
