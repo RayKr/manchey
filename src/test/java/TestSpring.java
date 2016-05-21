@@ -17,6 +17,6 @@ public class TestSpring {
 
     @Test
     public void test01() {
-//        userService.findUserByName("raykr");
+        userService.addUser("zhanan", 33);
     }
 }
