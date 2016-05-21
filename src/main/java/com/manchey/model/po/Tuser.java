@@ -7,7 +7,7 @@ import javax.persistence.Id;
 /**
  * Created by Ray on 2016/5/20.
  */
-@Entity
+@Entity(name = "MC_USERS")
 public class Tuser {
     private Integer id;
     private String name;
