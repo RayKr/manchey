@@ -61,9 +61,6 @@
             <tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED"/>
             <tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED"/>
 
-            <tx:method name="open*" isolation="DEFAULT" propagation="REQUIRED"/>
-            <tx:method name="buyStock" isolation="DEFAULT" propagation="REQUIRED" rollback-for="StockException"/>
-
             <tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="load*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
