@@ -19,36 +19,11 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!--注册druid数据源-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.user}"/>
         <property name="password" value="${jdbc.password}"/>
-
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1" />
-        <property name="minIdle" value="1" />
-        <property name="maxActive" value="20" />
-
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000" />
-
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
-
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
-
-        <property name="validationQuery" value="SELECT 'x'" />
-        <property name="testWhileIdle" value="true" />
-        <property name="testOnBorrow" value="false" />
-        <property name="testOnReturn" value="false" />
-
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
-
-        <!-- 配置监控统计拦截的filters -->
-        <property name="filters" value="stat" />
     </bean>
 
     <!--注册SessionFactory-->
@@ -66,6 +41,7 @@
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <!--格式化sql语句-->
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</prop>
             </props>
         </property>
         <!--指定hibernate实体类包-->
@@ -78,12 +54,15 @@
     </bean>
 
     <!--注册事务通知-->
-    <tx:advice id="interceptor" transaction-manager="transactionManager">
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <!--配置连接点-->
             <tx:method name="add*" isolation="DEFAULT" propagation="REQUIRED"/>
             <tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED"/>
             <tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED"/>
+
+            <tx:method name="open*" isolation="DEFAULT" propagation="REQUIRED"/>
+            <tx:method name="buyStock" isolation="DEFAULT" propagation="REQUIRED" rollback-for="StockException"/>
 
             <tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
@@ -95,17 +74,13 @@
     
     <!--AOP配置-->
     <aop:config>
-        <aop:pointcut id="txPointcut" expression="execution(* *..service..*Impl.*(..))"/>
-        <aop:advisor advice-ref="interceptor" pointcut-ref="txPointcut"/>
+        <aop:pointcut id="txPointcut" expression="execution(* *..service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
 
     <!--自动扫描包，自动注入-->
     <context:component-scan base-package="com.manchey.dao, com.manchey.service"/>
 
-    <aop:aspectj-autoproxy />
-
-
-    <!--service-->
 
 
 </beans>

@@ -8,24 +8,21 @@ import javax.persistence.Id;
  * Created by Ray on 2016/5/20.
  */
 @Entity
-public class User {
+public class Tuser {
     private Integer id;
     private String name;
     private int age;
-    private String borthDate;
 
-    public User(String name, int age, String borthDate) {
-        this.name = name;
-        this.age = age;
-        this.borthDate = borthDate;
+    public Tuser() {
     }
 
-    public User() {
-
+    public Tuser(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     @Id
-    @GeneratedValue(generator = "native")
+    @GeneratedValue()
     public Integer getId() {
         return id;
     }
@@ -50,21 +47,12 @@ public class User {
         this.age = age;
     }
 
-    public String getBorthDate() {
-        return borthDate;
-    }
-
-    public void setBorthDate(String borthDate) {
-        this.borthDate = borthDate;
-    }
-
     @Override
     public String toString() {
-        return "User{" +
+        return "Tuser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", borthDate='" + borthDate + '\'' +
                 '}';
     }
 }

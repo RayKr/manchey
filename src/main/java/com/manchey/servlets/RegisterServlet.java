@@ -1,5 +1,7 @@
 package com.manchey.servlets;
 
+import com.manchey.model.po.Tuser;
+import com.manchey.service.UserServiceI;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -21,12 +23,17 @@ public class RegisterServlet extends javax.servlet.http.HttpServlet {
         request.setCharacterEncoding("utf-8");
         String name = request.getParameter("name");
 
-        // 从Spring容器中获取service
-        WebApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+//        // 从Spring容器中获取service
+//        WebApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+//        System.out.println("ac = " + ac);
+//
+//        // 调用service的方法
+//        UserServiceI userService = (UserServiceI) ac.getBean("userService");
+//        Tuser user = userService.findUserByName(name);
+//        System.out.println(user.toString());
 
-        System.out.println("ac = " + ac);
-        // 调用service的方法
         // 跳转到保存成功的页面
+        request.getRequestDispatcher("/userinfo.jsp").forward(request, response);
 
     }
 
