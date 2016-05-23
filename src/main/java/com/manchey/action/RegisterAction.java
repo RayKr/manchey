@@ -37,9 +37,10 @@ public class RegisterAction {
     }
 
     public String execute() {
-        System.out.println("name = " + name);
-        System.out.println("userservice = "+ userService);
         userService.addUser(name, age);
+
+//        Tuser user = userService.findUser(age);
+//        System.out.println(user.toString());
         return "success";
     }
 }

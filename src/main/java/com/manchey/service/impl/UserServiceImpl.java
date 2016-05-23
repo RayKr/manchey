@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserServiceI {
     public void addUser(String name, int age) {
         userDao.save(new Tuser(name, age));
     }
+
+    @Override
+    public Tuser findUser(int id) {
+        return userDao.get(Tuser.class, id);
+    }
 }
