@@ -2,10 +2,10 @@
 <html>
 <body>
 <h2>获取用户资料</h2>
-<form action="registerServlet" method="post">
+<form action="/test/register" method="post">
     姓名：<input type="text" name="name"><br>
     年龄：<input type="text" name="age"><br>
-    <input type="submit" value="查询">
+    <input type="submit" value="注册">
 </form>
 </body>
 </html>
