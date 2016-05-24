@@ -13,7 +13,7 @@ public class MyTest {
 
     @Before
     public void before() {
-        String configLocation = "spring-config.xml";
+        String configLocation = "spring-hibernate.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(configLocation);
 
         service = (UserServiceI) ac.getBean("userService");

@@ -115,10 +115,4 @@
         <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut"/>
     </aop:config>
 
-    <!--自动扫描包，自动注入-->
-    <context:component-scan base-package="com.manchey.dao, com.manchey.service"/>
-
-    <!--apsectJ自动代理-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
-
 </beans>

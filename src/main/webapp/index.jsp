@@ -7,5 +7,9 @@
     年龄：<input type="text" name="age"><br>
     <input type="submit" value="注册">
 </form>
+
+<form action="/test2/hello" method="post">
+    <input type="submit" value="我来了">
+</form>
 </body>
 </html>

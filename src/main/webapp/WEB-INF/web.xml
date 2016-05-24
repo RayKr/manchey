@@ -8,7 +8,7 @@
   <!--指定spring文件的位置及名称-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-config.xml</param-value>
+    <param-value>classpath:spring.xml,classpath:spring-hibernate.xml</param-value>
   </context-param>
 
   <!--注册Spring监听器-->
