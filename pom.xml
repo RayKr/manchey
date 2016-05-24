@@ -76,8 +76,16 @@
             <version>${aspectj.version}</version>
         </dependency>
 
-        <!-- struts2 -->
+        <!-- Spring MVC -->
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <!-- struts2 -->
+        <!--<dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
             <version>${struts.version}</version>
@@ -91,7 +99,7 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-convention-plugin</artifactId>
             <version>${struts.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- hibernate5 -->
         <dependency>

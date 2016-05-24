@@ -1,10 +1,6 @@
 package com.manchey.action;
 
 import com.manchey.service.UserServiceI;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,8 +10,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope("prototype")
-@Namespace("/test")
-@ParentPackage("struts-default")
 public class RegisterAction {
     private UserServiceI userService;
     private String name;
@@ -42,7 +36,6 @@ public class RegisterAction {
         this.age = age;
     }
 
-    @Action(value = "register", results = @Result(location = "/userinfo.jsp"))
     public String execute() {
         userService.addUser(name, age);
 

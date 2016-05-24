@@ -11,7 +11,7 @@
     <param-value>classpath:spring-config.xml</param-value>
   </context-param>
 
-  <!--注册监听器-->
+  <!--注册Spring监听器-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -26,29 +26,27 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!--注册struts2启动器-->
-  <filter>
-    <filter-name>struts2</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>struts2</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!-- SpringMVC Config -->
+  <servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 默认名称为[servletname]-servlet.xml，即为springMVC-servlet.xml时，不需要指定文件路径，否则必须指定 -->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-mvc.xml</param-value>
+    </init-param>
+    <!-- 启动顺序：1-代表Tomcat一启动就初始化SpringMVC的servlet -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
   <!-- 配置Druid统计信息显示 -->
   <servlet>
     <servlet-name>DruidStatView</servlet-name>
     <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
-    <!-- 配置监控页页账号和密码-->
-    <!--<init-param>
-      <param-name>loginUsername</param-name>
-      <param-value>druid</param-value>
-    </init-param>
-    <init-param>
-      <param-name>loginPassword</param-name>
-      <param-value>druid</param-value>
-    </init-param>-->
     <!-- 限制访问权限 -->
     <init-param>
       <param-name>allow</param-name>
