@@ -1,61 +1,44 @@
 package com.manchey.controller;
 
+import com.manchey.utils.SHA1;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * Created by Ray on 2016/5/24.
  */
 @Controller
-@RequestMapping("/")
 public class WechatTokenAuthController {
 
-    private final String token = "manchey";
+    private static final String TOKEN = "manchey";
 
-    @RequestMapping(value = "tokenauth", method = RequestMethod.GET)
-    public String auth(ModelMap map,
-                       @RequestParam String signature,
-                       @RequestParam String timestamp,
-                       @RequestParam String nonce,
-                       @RequestParam String echostr) {
+    @RequestMapping(value = "/tokenauth", method = RequestMethod.GET)
+    public @ResponseBody
+    String auth(
+            @RequestParam String signature,
+            @RequestParam String timestamp,
+            @RequestParam String nonce,
+            @RequestParam String echostr) {
 
-        List<String> list = new ArrayList<String>();
-        list.add(token);
-        list.add(timestamp);
-        list.add(nonce);
 
-        Collections.sort(list);
+        String[] str = { TOKEN, timestamp, nonce };
 
-        String lstr = "";
-        for (String str :
-                list) {
-            lstr += str;
-        }
+        Arrays.sort(str);
 
-        String outStr = "";
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-            byte[] digest = md.digest(lstr.getBytes());
-            outStr = digest.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        String bigStr = str[0] + str[1] +str[2];
+
+        String outStr = new SHA1().getDigestOfString(bigStr.getBytes()).toLowerCase();
+        System.out.println(outStr);
 
         if (outStr.equals(signature)) {
-            map.addAttribute("message", echostr);
-        } else {
-            map.addAttribute("message", echostr);
+            return echostr;
         }
 
-        return "tokenauth";
+        return "no";
     }
 }
