@@ -34,6 +34,8 @@
     </repositories>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
         <spring.version>4.2.6.RELEASE</spring.version>
         <struts.version>2.5</struts.version>
         <hibernate.version>5.0.9.Final</hibernate.version>
@@ -88,23 +90,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.version}</version>
         </dependency>
-
-        <!-- struts2 -->
-        <!--<dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-spring-plugin</artifactId>
-            <version>${struts.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-convention-plugin</artifactId>
-            <version>${struts.version}</version>
-        </dependency>-->
 
         <!-- hibernate5 -->
         <dependency>

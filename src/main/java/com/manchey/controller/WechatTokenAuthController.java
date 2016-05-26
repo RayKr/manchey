@@ -17,7 +17,7 @@ public class WechatTokenAuthController {
 
     private static final String TOKEN = "manchey";
 
-    @RequestMapping(value = "/tokenauth", method = RequestMethod.GET)
+    @RequestMapping(value = "/wechat", method = RequestMethod.GET)
     public @ResponseBody
     String auth(
             @RequestParam String signature,
