@@ -1,65 +1,93 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.BaseMessage;
+import com.manchey.utils.wechat.AdapterStringCDATA;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * 回复音乐消息
  * Created by Ray on 2016/5/27.
  */
+@XmlRootElement(name = "xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ResMusicMessage extends BaseMessage {
 
-    // 音乐标题
-    private String title;
+    @XmlElement(name = "Music")
+    private Music music;
 
-    // 音乐描述
-    private String description;
-
-    // 音乐链接
-    private String musicUrl;
-
-    // 高质量音乐链接，WIFI环境优先使用该链接播放音乐
-    private String HQmusicUrl;
-
-    // 缩略图的媒体id，通过素材管理中的接口上传多媒体文件，得到的id
-    private String ThumbMediaId;
-
-    public String getTitle() {
-        return title;
+    public Music getMusic() {
+        return music;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    @XmlAccessorType(XmlAccessType.FIELD)
+    public static class Music {
+        @XmlElement(name = "Title")
+        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        private String title; // 音乐标题
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        @XmlElement(name = "Description")
+        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        private String description; // 音乐描述
 
-    public String getMusicUrl() {
-        return musicUrl;
-    }
+        @XmlElement(name = "MusicUrl")
+        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        private String musicUrl; // 音乐链接
 
-    public void setMusicUrl(String musicUrl) {
-        this.musicUrl = musicUrl;
-    }
+        @XmlElement
+        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        private String HQmusicUrl; // 高质量音乐链接，WIFI环境优先使用该链接播放音乐
 
-    public String getHQmusicUrl() {
-        return HQmusicUrl;
-    }
+        @XmlElement(name = "ThumbMediaId")
+        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        private String thumbMediaId; // 缩略图的媒体id，通过素材管理中的接口上传多媒体文件，得到的id
 
-    public void setHQmusicUrl(String HQmusicUrl) {
-        this.HQmusicUrl = HQmusicUrl;
-    }
+        public String getTitle() {
+            return title;
+        }
 
-    public String getThumbMediaId() {
-        return ThumbMediaId;
-    }
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-    public void setThumbMediaId(String thumbMediaId) {
-        ThumbMediaId = thumbMediaId;
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getMusicUrl() {
+            return musicUrl;
+        }
+
+        public void setMusicUrl(String musicUrl) {
+            this.musicUrl = musicUrl;
+        }
+
+        public String getHQmusicUrl() {
+            return HQmusicUrl;
+        }
+
+        public void setHQmusicUrl(String HQmusicUrl) {
+            this.HQmusicUrl = HQmusicUrl;
+        }
+
+        public String getThumbMediaId() {
+            return thumbMediaId;
+        }
+
+        public void setThumbMediaId(String thumbMediaId) {
+            this.thumbMediaId = thumbMediaId;
+        }
     }
 }

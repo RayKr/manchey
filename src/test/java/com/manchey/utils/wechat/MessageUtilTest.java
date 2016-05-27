@@ -1,8 +1,12 @@
 package com.manchey.utils.wechat;
 
 import com.manchey.model.vo.wechat.message.request.ReqVideoMessage;
-import com.manchey.model.vo.wechat.message.request.ReqVoiceMessage;
+import com.manchey.model.vo.wechat.message.response.ResArticleMessage;
+import com.manchey.model.vo.wechat.message.response.ResMusicMessage;
 import junit.framework.TestCase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ray on 2016/5/27.
@@ -10,21 +14,55 @@ import junit.framework.TestCase;
 public class MessageUtilTest extends TestCase {
     public void testTextMessageToXml() throws Exception {
 
-        ReqVoiceMessage textMsg = new ReqVoiceMessage();
+        ResMusicMessage textMsg = new ResMusicMessage();
         textMsg.setToUserName("jzl");
         textMsg.setFromUserName("nut");
         textMsg.setCreateTime(32322434);
         textMsg.setMsgType("6");
-        textMsg.setMsgId(7878765);
-        textMsg.setMediaId("43434343");
-        textMsg.setFormat("的方式");
-        textMsg.setRecognition("nutk");
 
-        String s = MessageUtil.textMessageToXml(textMsg);
-        System.out.println(s);
+        ResMusicMessage.Music music = new ResMusicMessage.Music();
+        music.setTitle("米店");
+        music.setDescription("好听");
+        music.setHQmusicUrl("http://ddd");
+        music.setMusicUrl("ffff");
+        music.setThumbMediaId("343");
+
+        textMsg.setMusic(music);
 
         String s1 = MessageUtil.convertToXML(textMsg);
         System.out.println(s1);
+
+        ResArticleMessage articleMessage = new ResArticleMessage();
+        articleMessage.setToUserName("jzl");
+        articleMessage.setFromUserName("nut");
+        articleMessage.setCreateTime(32322434);
+        articleMessage.setMsgType("6");
+
+        ResArticleMessage.Articles.Article article1 = new ResArticleMessage.Articles.Article();
+        article1.setTitle("shaya");
+        article1.setDescription("desc");
+        article1.setUrl("url:ddd");
+        article1.setPicUrl("picurl:ddddxcc");
+
+        ResArticleMessage.Articles.Article article2 = new ResArticleMessage.Articles.Article();
+        article2.setTitle("shaya");
+        article2.setDescription("desc");
+        article2.setUrl("url:ddd");
+        article2.setPicUrl("picurl:ddddxcc");
+
+        List<ResArticleMessage.Articles.Article> lst = new ArrayList<>();
+        lst.add(article1);
+        lst.add(article2);
+
+        ResArticleMessage.Articles articles = new ResArticleMessage.Articles();
+        articles.setItem(lst);
+
+        articleMessage.setArticles(articles);
+        articleMessage.setArticleCount("2");
+
+        String s = MessageUtil.convertToXML(articleMessage);
+        System.out.println(s);
+
     }
 
     public void testConvertToObject() {
