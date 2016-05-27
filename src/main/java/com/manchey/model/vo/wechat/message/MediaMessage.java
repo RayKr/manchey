@@ -1,4 +1,6 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message;
+
+import com.manchey.model.vo.wechat.message.request.NormalMessage;
 
 /**
  * 多媒体消息基类

@@ -1,4 +1,6 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message.request;
+
+import com.manchey.model.vo.wechat.message.BaseMessage;
 
 /**
  * 普通消息的抽象基类

@@ -1,10 +1,10 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message.request;
 
 /**
  * 链接消息
  * Created by Ray on 2016/5/27.
  */
-public class LinkMessage extends NormalMessage {
+public class ReqLinkMessage extends NormalMessage {
 
     // 消息标题
     private String title;

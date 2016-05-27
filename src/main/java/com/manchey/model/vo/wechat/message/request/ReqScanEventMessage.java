@@ -1,10 +1,10 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message.request;
 
 /**
  * 二维码扫描事件消息
  * Created by Ray on 2016/5/27.
  */
-public class ScanEventMessage extends EventMessage {
+public class ReqScanEventMessage extends ReqEventMessage {
     // 事件KEY值，是一个32位无符号整数，即创建二维码时的二维码scene_id
     private long eventKey;
 

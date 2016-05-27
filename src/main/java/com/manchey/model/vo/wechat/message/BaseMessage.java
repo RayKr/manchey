@@ -1,13 +1,13 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message;
 
 /**
- * 所有消息基类
+ * 消息基类
  * Created by Ray on 2016/5/27.
  */
 public abstract class BaseMessage {
-    // 开发者微信号
+    // 目标帐号
     private String toUserName;
-    // 发送方帐号（一个OpenID）
+    // 源头帐号
     private String fromUserName;
     // 消息创建时间 （整型）
     private Integer createTime;

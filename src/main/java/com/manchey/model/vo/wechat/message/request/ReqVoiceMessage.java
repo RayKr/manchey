@@ -1,10 +1,12 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message.request;
+
+import com.manchey.model.vo.wechat.message.MediaMessage;
 
 /**
  * 语音消息
  * Created by Ray on 2016/5/27.
  */
-public class VoiceMessage extends MediaMessage {
+public class ReqVoiceMessage extends MediaMessage {
 
     // 语音格式，如amr，speex等
     private String format;

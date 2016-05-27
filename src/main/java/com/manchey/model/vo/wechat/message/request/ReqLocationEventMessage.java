@@ -1,9 +1,9 @@
-package com.manchey.model.vo;
+package com.manchey.model.vo.wechat.message.request;
 
 /**
  * Created by Ray on 2016/5/27.
  */
-public class LocationEventMessage extends EventMessage {
+public class ReqLocationEventMessage extends ReqEventMessage {
 
     // 地理位置纬度
     private String latitude;
