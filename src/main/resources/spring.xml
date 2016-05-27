@@ -14,8 +14,4 @@
     <!--apsectJ自动代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
-        <!--<property name="mappingLocation" value="classpath:mapping.xml"/>-->
-    </bean>
-
 </beans>
