@@ -1,19 +1,28 @@
 package com.manchey.model.vo.wechat.message.request;
 
+import com.manchey.model.vo.wechat.message.NormalMessage;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * 链接消息
  * Created by Ray on 2016/5/27.
  */
+@XmlRootElement(name = "xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ReqLinkMessage extends NormalMessage {
 
-    // 消息标题
-    private String title;
+    @XmlElement(name = "Title")
+    private String title; // 消息标题
 
-    // 消息描述
-    private String description;
+    @XmlElement(name = "Description")
+    private String description; // 消息描述
 
-    // 消息链接
-    private String url;
+    @XmlElement(name = "Url")
+    private String url; // 消息链接
 
     public String getTitle() {
         return title;

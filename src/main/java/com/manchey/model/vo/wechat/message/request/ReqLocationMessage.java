@@ -1,22 +1,31 @@
 package com.manchey.model.vo.wechat.message.request;
 
+import com.manchey.model.vo.wechat.message.NormalMessage;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * 地址位置信息
  * Created by Ray on 2016/5/27.
  */
+@XmlRootElement(name = "xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ReqLocationMessage extends NormalMessage {
 
-    // 地理位置维度
-    private String location_X;
+    @XmlElement(name = "Location_X")
+    private String location_X; // 地理位置维度
 
-    // 地理位置经度
-    private String location_Y;
+    @XmlElement(name = "Location_Y")
+    private String location_Y; // 地理位置经度
 
-    // 	地图缩放大小
-    private String scale;
+    @XmlElement(name = "Scale")
+    private String scale; // 地图缩放大小
 
-    // 地理位置信息
-    private String label;
+    @XmlElement(name = "Label")
+    private String label;  // 地理位置信息
 
     public String getLocation_X() {
         return location_X;
