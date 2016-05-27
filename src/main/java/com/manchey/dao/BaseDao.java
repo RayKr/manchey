@@ -3,13 +3,11 @@ package com.manchey.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import static com.alibaba.druid.sql.ast.SQLPartitionValue.Operator.List;
-
 /**
  * DAO层泛型接口
  * Created by Ray on 2016/5/20.
  */
-public interface BaseDaoI<T> {
+public interface BaseDao<T> {
 
     Serializable save(T o);
 

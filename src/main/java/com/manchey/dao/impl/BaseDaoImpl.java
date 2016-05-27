@@ -1,6 +1,6 @@
 package com.manchey.dao.impl;
 
-import com.manchey.dao.BaseDaoI;
+import com.manchey.dao.BaseDao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Ray on 2016/5/20.
  */
 @Repository("baseDao")
-public class BaseDaoImpl<T> implements BaseDaoI<T> {
+public class BaseDaoImpl<T> implements BaseDao<T> {
 
     private SessionFactory sessionFactory;
 

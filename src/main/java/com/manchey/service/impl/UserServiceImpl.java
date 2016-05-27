@@ -1,6 +1,6 @@
 package com.manchey.service.impl;
 
-import com.manchey.dao.BaseDaoI;
+import com.manchey.dao.BaseDao;
 import com.manchey.model.po.Tuser;
 import com.manchey.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 @Service("userService")
 public class UserServiceImpl implements UserServiceI {
 
-    private BaseDaoI<Tuser> userDao;
+    private BaseDao<Tuser> userDao;
 
-    public BaseDaoI<Tuser> getUserDao() {
+    public BaseDao<Tuser> getUserDao() {
         return userDao;
     }
 
     @Autowired
-    public void setUserDao(BaseDaoI<Tuser> userDao) {
+    public void setUserDao(BaseDao<Tuser> userDao) {
         this.userDao = userDao;
     }
 
