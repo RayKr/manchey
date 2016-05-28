@@ -19,15 +19,11 @@ public interface BaseDao<T> {
 
     T get(Class<T> c, Serializable id);
 
-    T get(String hql, Object[] param);
-
-    T get(String hql, List<Object> param);
+    T get(String hql, Object...param);
 
     List<T> find(String hql);
 
-    List<T> find(String hql, Object[] param);
-
-    List<T> find(String hql, List<Object> param);
+    List<T> find(String hql, Object...param);
 
     /**
      * 按照分页查询结果
@@ -36,14 +32,11 @@ public interface BaseDao<T> {
      * @param rows
      *              每页要显示的行数
      */
-    List<T> find(String hql, Object[] param, Integer page, Integer rows);
-
-    List<T> find(String hql, List<Object> param, Integer page, Integer rows);
+    List<T> find(String hql, Integer page, Integer rows, Object...param);
 
     List findSQL(String hql, Class T);
 
     List findSQL(String hql);
-
 
     /**
      * 执行sql语句
@@ -51,8 +44,6 @@ public interface BaseDao<T> {
      */
     Integer executeHql(String hql);
 
-    Integer executeHql(String hql, Object[] param);
-
-    Integer executeHql(String hql, List<Object> param);
+    Integer executeHql(String hql, Object...param);
 
 }

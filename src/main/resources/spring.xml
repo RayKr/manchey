@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--自动扫描包，自动注入-->
-    <context:component-scan base-package="com.manchey.dao, com.manchey.service"/>
+    <context:component-scan base-package="com.manchey.dao, com.manchey.service, com.manchey.support"/>
 
     <!--apsectJ自动代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>

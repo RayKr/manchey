@@ -10,7 +10,6 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
     <!--加载jdbc配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
@@ -67,6 +66,9 @@
                 <prop key="hibernate.current_session_context_class">
                     org.springframework.orm.hibernate5.SpringSessionContext
                 </prop>
+                <!--配置数据库信息，让IDEA可以ORM从表映射出Object-->
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/manchey</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>
         <!--指定hibernate实体类包-->
@@ -83,8 +85,23 @@
         <tx:attributes>
             <!--配置连接点-->
             <tx:method name="add*" isolation="DEFAULT" propagation="REQUIRED"/>
-            <tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED"/>
-            <tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED"/>
+            <tx:method name="append*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="bind*" isolation="DEFAULT" propagation="REQUIRED" />
+
+            <tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="edit*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="saveOrUpdate*" isolation="DEFAULT" propagation="REQUIRED" />
+
+            <tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="init" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="delAndInit" isolation="DEFAULT" propagation="REQUIRED" />
+
+            <tx:method name="repair*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="upload*" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="roleEdit*" isolation="DEFAULT" propagation="REQUIRED" />
 
             <tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
             <tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
@@ -96,7 +113,7 @@
 
     <!--AOP配置-->
     <aop:config>
-        <aop:pointcut id="txPointcut" expression="execution(* *..service.*.*(..))"/>
+        <aop:pointcut id="txPointcut" expression="execution(* *..service..*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
 
@@ -107,7 +124,7 @@
             <list>
                 <value>com.manchey.service.*</value>
                 <value>com.manchey.dao.*</value>
-                <value>com.manchey.action.*</value>
+                <value>com.manchey.controller.*</value>
             </list>
         </property>
     </bean>

@@ -28,27 +28,33 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return sessionFactory.getCurrentSession();
     }
 
+    @Override
     public Serializable save(T o) {
         return getCurrentSession().save(o);
     }
 
+    @Override
     public void delete(T o) {
         getCurrentSession().delete(o);
     }
 
+    @Override
     public void update(T o) {
         getCurrentSession().update(o);
     }
 
+    @Override
     public void saveOrUpdate(T o) {
         getCurrentSession().saveOrUpdate(o);
     }
 
+    @Override
     public T get(Class<T> c, Serializable id) {
-        return (T) getCurrentSession().get(c, id);
+        return  getCurrentSession().get(c, id);
     }
 
-    public T get(String hql, Object[] param) {
+    @Override
+    public T get(String hql, Object...param) {
         List<T> lst = this.find(hql, param);
         if (lst != null && lst.size() > 0) {
             return lst.get(0);
@@ -56,49 +62,62 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         return null;
     }
 
-    public T get(String hql, List<Object> param) {
-        // TODO T get(String hql, List<Object> param)
-        return null;
-    }
-
+    @Override
     public List<T> find(String hql) {
         return this.getCurrentSession().createQuery(hql).list();
     }
 
-    public List<T> find(String hql, Object[] param) {
+    public List<T> find(String hql, Object...params) {
         Query q = this.getCurrentSession().createQuery(hql);
-        return null;
+        if (params != null && params.length > 0) {
+            for (int i = 0; i < params.length; i++) {
+                q.setParameter(i, params[i]);
+            }
+        }
+        return q.list();
     }
 
-    public List<T> find(String hql, List<Object> param) {
-        return null;
+    @Override
+    public List<T> find(String hql, Integer page, Integer rows, Object...param) {
+        if (page == null || page < 1) {
+            page = 1;
+        }
+        if (rows == null || rows < 1) {
+            rows = 10;
+        }
+        Query q = this.getCurrentSession().createQuery(hql);
+        if (param != null && param.length > 0) {
+            for (int i = 0; i < param.length; i++) {
+                q.setParameter(i, param[i]);
+            }
+        }
+        return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }
 
-    public List<T> find(String hql, Object[] param, Integer page, Integer rows) {
-        return null;
-    }
-
-    public List<T> find(String hql, List<Object> param, Integer page, Integer rows) {
-        return null;
-    }
-
+    @Override
     public List findSQL(String hql, Class T) {
-        return null;
+        return this.getCurrentSession().createSQLQuery(hql).addEntity(T).list();
     }
 
+    @Override
     public List findSQL(String hql) {
-        return null;
+        return this.getCurrentSession().createSQLQuery(hql).list();
     }
 
+    @Override
     public Integer executeHql(String hql) {
-        return null;
+        return this.getCurrentSession().createQuery(hql).executeUpdate();
     }
 
+    @Override
     public Integer executeHql(String hql, Object[] param) {
-        return null;
+        Query q = this.getCurrentSession().createQuery(hql);
+        if (param != null && param.length > 0) {
+            for (int i = 0; i < param.length; i++) {
+                q.setParameter(i, param[i]);
+            }
+        }
+        return q.executeUpdate();
     }
 
-    public Integer executeHql(String hql, List<Object> param) {
-        return null;
-    }
 }
