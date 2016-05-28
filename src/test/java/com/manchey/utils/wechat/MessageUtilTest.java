@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Ray on 2016/5/27.
@@ -78,6 +79,9 @@ public class MessageUtilTest extends TestCase {
 
         ReqVideoMessage resArticleMessage = MessageUtil.convertToObject(ReqVideoMessage.class, xml);
         System.out.println(resArticleMessage.toString());
+
+        Map<String, String> stringStringMap = MessageUtil.convertToMap(xml);
+        System.out.println(stringStringMap);
     }
 
 }
