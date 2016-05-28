@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * DAO层使用泛型
@@ -63,15 +64,32 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
+    public T get(String hql, Map<String, Object> params) {
+        return this.get(hql, params);
+    }
+
+    @Override
     public List<T> find(String hql) {
         return this.getCurrentSession().createQuery(hql).list();
     }
 
+    @Override
     public List<T> find(String hql, Object...params) {
         Query q = this.getCurrentSession().createQuery(hql);
         if (params != null && params.length > 0) {
             for (int i = 0; i < params.length; i++) {
-                q.setParameter(i, params[i]);
+                q.setParameter(i+"", params[i]);
+            }
+        }
+        return q.list();
+    }
+
+    @Override
+    public List<T> find(String hql, Map<String, Object> params) {
+        Query q = this.getCurrentSession().createQuery(hql);
+        if (params != null && params.size() > 0) {
+            for (Map.Entry<String, Object> entry: params.entrySet()) {
+                q.setParameter(entry.getKey(), entry.getValue());
             }
         }
         return q.list();
@@ -88,7 +106,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         Query q = this.getCurrentSession().createQuery(hql);
         if (param != null && param.length > 0) {
             for (int i = 0; i < param.length; i++) {
-                q.setParameter(i, param[i]);
+                q.setParameter(i+"", param[i]);
             }
         }
         return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
@@ -110,11 +128,11 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public Integer executeHql(String hql, Object[] param) {
+    public Integer executeHql(String hql, Object...param) {
         Query q = this.getCurrentSession().createQuery(hql);
         if (param != null && param.length > 0) {
             for (int i = 0; i < param.length; i++) {
-                q.setParameter(i, param[i]);
+                q.setParameter(i+"", param[i]);
             }
         }
         return q.executeUpdate();

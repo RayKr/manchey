@@ -2,6 +2,7 @@ package com.manchey.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * DAO层泛型接口
@@ -21,9 +22,13 @@ public interface BaseDao<T> {
 
     T get(String hql, Object...param);
 
+    T get(String hql, Map<String, Object> params);
+
     List<T> find(String hql);
 
     List<T> find(String hql, Object...param);
+
+    List<T> find(String hql, Map<String, Object> params);
 
     /**
      * 按照分页查询结果

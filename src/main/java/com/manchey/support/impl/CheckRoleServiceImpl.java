@@ -24,7 +24,7 @@ public class CheckRoleServiceImpl implements CheckRoleService {
     @Override
     public RoleInfo checkRoleCorrect(RoleInfo roleInfo) throws RoleInfoException {
         // 验证大区是否存在
-        String hql = "from TRegion where regionName = ?";
+        String hql = "from TRegion where regionName=?0 ";
         TRegion tRegion = regionDao.get(hql, roleInfo.getRegionName());
         if (tRegion == null) {
             throw new RoleInfoException("您输入的大区名字有误，请确认后重试！");
@@ -32,7 +32,7 @@ public class CheckRoleServiceImpl implements CheckRoleService {
         roleInfo.setRegionCode(tRegion.getRegionCode());
 
         // 验证服务器是否存在
-        hql = "from TServer where serverName = ? and regionCode = ?";
+        hql = "from TServer where serverName=?0 and regionCode=?1 ";
         TServer tServer = serverDao.get(hql, roleInfo.getServerName(), roleInfo.getRegionCode());
         if (tServer == null) {
             throw new RoleInfoException("该大区不存在此服务器，请确认后重试！");
