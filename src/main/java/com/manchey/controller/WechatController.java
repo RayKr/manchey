@@ -1,6 +1,8 @@
 package com.manchey.controller;
 
+import com.manchey.service.CoreService;
 import com.manchey.utils.wechat.AuthUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,15 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
- * 信息分发处理类
+ * 微信信息分发处理类
  * Created by Ray on 2016/5/27.
  */
 @Controller
 @RequestMapping("wechat")
-public class MessageController {
+public class WechatController {
+
+    @Autowired
+    private CoreService coreService;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String auth(
@@ -29,16 +33,13 @@ public class MessageController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void resMessage(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String resMessage(HttpServletRequest request) throws Exception {
 
-        // 接受request流
+        // 将请求、响应的编码均设置为UTF-8（防止中文乱码）
+        request.setCharacterEncoding("UTF-8");
 
-        // 解析xml，封装成request vo对象
+        String resStr = coreService.processRequest(request);
 
-        // 处理业务逻辑，封装response vo对象
-
-        // 序列化vo对象为xml
-
-        // 返回xml
+        return resStr;
     }
 }
