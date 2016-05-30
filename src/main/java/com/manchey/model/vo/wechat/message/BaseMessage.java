@@ -25,7 +25,7 @@ public abstract class BaseMessage {
 
     @XmlElement(name = "CreateTime")
     @XmlJavaTypeAdapter(AdapterIntegerCDATA.class)
-    protected Integer createTime; // 消息创建时间 （整型）
+    protected long createTime; // 消息创建时间 （整型）
 
     @XmlElement(name = "MsgType")
     @XmlJavaTypeAdapter(AdapterStringCDATA.class)
@@ -47,11 +47,11 @@ public abstract class BaseMessage {
         this.fromUserName = fromUserName;
     }
 
-    public Integer getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 

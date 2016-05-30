@@ -23,6 +23,12 @@ public class RoleInfo {
     public RoleInfo() {
     }
 
+    public RoleInfo(String regionName, String serverName, String roleName) {
+        this.regionName = regionName;
+        this.serverName = serverName;
+        this.roleName = roleName;
+    }
+
     public RoleInfo(String regionName, String serverName, String roleName, Integer level, String unit) {
         this.regionName = regionName;
         this.serverName = serverName;

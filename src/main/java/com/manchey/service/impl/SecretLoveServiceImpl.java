@@ -21,16 +21,6 @@ public class SecretLoveServiceImpl implements SecretLoveService {
     @Autowired
     private BaseDao<TRole> tRoleDao;
 
-
-//    public void settRoleDao(BaseDao<TRole> tRoleDao) {
-//        this.tRoleDao = tRoleDao;
-//    }
-//
-//
-//    public void setCheckRoleService(CheckRoleService checkRoleService) {
-//        this.checkRoleService = checkRoleService;
-//    }
-
     @Override
     public void bindMySelf(RoleInfo roleInfo) throws RoleInfoException {
 

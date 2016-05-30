@@ -1,6 +1,6 @@
 package com.manchey.controller;
 
-import com.manchey.service.CoreService;
+import com.manchey.service.WechatCoreService;
 import com.manchey.utils.wechat.AuthUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Ray on 2016/5/27.
  */
 @Controller
-@RequestMapping("wechat")
+@RequestMapping("/wechat")
 public class WechatController {
 
     @Autowired
-    private CoreService coreService;
+    private WechatCoreService coreService;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody String auth(
