@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-05-28 19:41:37
+Date: 2016-05-31 22:49:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,7 +74,7 @@ CREATE TABLE `role` (
   `roleType` varchar(10) DEFAULT NULL COMMENT '角色类型：由门派和体型限制',
   PRIMARY KEY (`id`),
   KEY `F_SERVERCODE` (`serverCode`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
@@ -82,6 +82,9 @@ CREATE TABLE `role` (
 INSERT INTO `role` VALUES ('1', '萧墨衣', '1001', '90', 'cyam');
 INSERT INTO `role` VALUES ('2', '萧牡蛎', '1001', null, null);
 INSERT INTO `role` VALUES ('3', '铁锅炖大鹅', '1001', null, null);
+INSERT INTO `role` VALUES ('4', '铁锅炖大鹅', '1001', '90', null);
+INSERT INTO `role` VALUES ('5', '铁锅炖大鹅', '1001', '90', null);
+INSERT INTO `role` VALUES ('6', '阿拉丁', '1001', null, null);
 
 -- ----------------------------
 -- Table structure for `rolerelation`
