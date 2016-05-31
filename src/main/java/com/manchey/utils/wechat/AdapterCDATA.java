@@ -4,18 +4,18 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
  * 添加CDATA标签的适配器
- * 处理Integer类型
+ * 处理String类型
  * Created by Ray on 2016/5/27.
  */
-public class AdapterIntegerCDATA extends XmlAdapter<String, Integer> {
+public class AdapterCDATA extends XmlAdapter<String, Object> {
 
     @Override
-    public Integer unmarshal(String v) throws Exception {
-        return null;
+    public Object unmarshal(String v) throws Exception {
+        return v;
     }
 
     @Override
-    public String marshal(Integer v) throws Exception {
+    public String marshal(Object v) throws Exception {
         return "<![CDATA[" + v + "]]>";
     }
 }

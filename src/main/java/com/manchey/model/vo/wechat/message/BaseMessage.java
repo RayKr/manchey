@@ -1,7 +1,6 @@
 package com.manchey.model.vo.wechat.message;
 
-import com.manchey.utils.wechat.AdapterStringCDATA;
-import com.manchey.utils.wechat.AdapterIntegerCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,19 +15,18 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public abstract class BaseMessage {
 
     @XmlElement(name = "ToUserName")
-    @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+    @XmlJavaTypeAdapter(AdapterCDATA.class)
     protected String toUserName; // 目标帐号
 
     @XmlElement(name = "FromUserName")
-    @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+    @XmlJavaTypeAdapter(AdapterCDATA.class)
     protected String fromUserName; // 源头帐号
 
     @XmlElement(name = "CreateTime")
-    @XmlJavaTypeAdapter(AdapterIntegerCDATA.class)
     protected long createTime; // 消息创建时间 （整型）
 
     @XmlElement(name = "MsgType")
-    @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+    @XmlJavaTypeAdapter(AdapterCDATA.class)
     protected String msgType; // 消息类型
 
     public String getToUserName() {

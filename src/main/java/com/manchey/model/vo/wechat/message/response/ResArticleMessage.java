@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.BaseMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +19,7 @@ import java.util.List;
 public class ResArticleMessage extends BaseMessage {
 
     @XmlElement(name = "ArticleCount")
-    @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+    @XmlJavaTypeAdapter(AdapterCDATA.class)
     private String articleCount; // 图文消息个数，限制为10条以内
 
     @XmlElement(name = "Articles")
@@ -59,19 +59,19 @@ public class ResArticleMessage extends BaseMessage {
         public static class Article {
 
             @XmlElement(name = "Title")
-            @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+            @XmlJavaTypeAdapter(AdapterCDATA.class)
             private String title; // 图文消息标题
 
             @XmlElement(name = "Description")
-            @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+            @XmlJavaTypeAdapter(AdapterCDATA.class)
             private String description; // 	图文消息描述
 
             @XmlElement(name = "PicUrl")
-            @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+            @XmlJavaTypeAdapter(AdapterCDATA.class)
             private String picUrl; // 图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200
 
             @XmlElement(name = "Url")
-            @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+            @XmlJavaTypeAdapter(AdapterCDATA.class)
             private String url; // 点击图文消息跳转链接
 
             public String getTitle() {

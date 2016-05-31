@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.BaseMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -32,7 +32,7 @@ public class ResImageMessage extends BaseMessage {
     public static class Image {
 
         @XmlElement(name = "MediaId")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         protected String mediaId; // 视频消息媒体id，可以调用多媒体文件下载接口拉取数据。
 
         public String getMediaId() {

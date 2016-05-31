@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.MediaMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -32,11 +32,11 @@ public class ResVideoMessage extends MediaMessage {
     public static class Video {
 
         @XmlElement(name = "Title")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String title; // 视频消息的标题
 
         @XmlElement(name = "Description")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String description; // 视频消息的描述
 
         public String getTitle() {

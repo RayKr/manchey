@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.MediaMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -32,7 +32,7 @@ public class ResVoiceMessage extends MediaMessage {
     public static class Voice {
 
         @XmlElement(name = "MediaId")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String mediaId;
 
         public String getMediaId() {

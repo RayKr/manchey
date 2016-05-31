@@ -18,7 +18,7 @@ public class MessageUtilTest extends TestCase {
         ResMusicMessage textMsg = new ResMusicMessage();
         textMsg.setToUserName("jzl");
         textMsg.setFromUserName("nut");
-        textMsg.setCreateTime(32322434);
+        textMsg.setCreateTime(4343243);
         textMsg.setMsgType("6");
 
         ResMusicMessage.Music music = new ResMusicMessage.Music();
@@ -36,7 +36,7 @@ public class MessageUtilTest extends TestCase {
         ResArticleMessage articleMessage = new ResArticleMessage();
         articleMessage.setToUserName("jzl");
         articleMessage.setFromUserName("nut");
-        articleMessage.setCreateTime(32322434);
+        articleMessage.setCreateTime(434533);
         articleMessage.setMsgType("6");
 
         ResArticleMessage.Articles.Article article1 = new ResArticleMessage.Articles.Article();

@@ -1,6 +1,7 @@
 package com.manchey.controller;
 
 import com.manchey.service.WechatCoreService;
+import com.manchey.utils.HttpUtil;
 import com.manchey.utils.wechat.AuthUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 
 /**
  * 微信信息分发处理类
@@ -33,13 +36,19 @@ public class WechatController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody String resMessage(HttpServletRequest request) throws Exception {
+    public void resMessage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         // 将请求、响应的编码均设置为UTF-8（防止中文乱码）
         request.setCharacterEncoding("UTF-8");
 
-        String resStr = coreService.processRequest(request);
+        String xml = HttpUtil.request(request);
 
-        return resStr;
+        String resStr = coreService.processRequest(xml);
+
+        OutputStream os = response.getOutputStream();
+        os.write(resStr.getBytes("UTF-8"));
+        os.flush();
+        os.close();
+
     }
 }

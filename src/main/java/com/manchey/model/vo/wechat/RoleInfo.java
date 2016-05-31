@@ -16,6 +16,8 @@ public class RoleInfo {
 
     private String roleName; // 角色名
 
+    private String nickName; // 目标昵称
+
     private Integer level; // 级别
 
     private String unit; // 门派
@@ -27,6 +29,13 @@ public class RoleInfo {
         this.regionName = regionName;
         this.serverName = serverName;
         this.roleName = roleName;
+    }
+
+    public RoleInfo(String regionName, String serverName, String roleName, String nickName) {
+        this.regionName = regionName;
+        this.serverName = serverName;
+        this.roleName = roleName;
+        this.nickName = nickName;
     }
 
     public RoleInfo(String regionName, String serverName, String roleName, Integer level, String unit) {
@@ -93,13 +102,24 @@ public class RoleInfo {
         this.unit = unit;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     @Override
     public String toString() {
         return "RoleInfo{" +
-                "regionName='" + regionName + '\'' +
+                "regionCode=" + regionCode +
+                ", regionName='" + regionName + '\'' +
+                ", serverCode=" + serverCode +
                 ", serverName='" + serverName + '\'' +
                 ", roleName='" + roleName + '\'' +
-                ", level='" + level + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", level=" + level +
                 ", unit='" + unit + '\'' +
                 '}';
     }

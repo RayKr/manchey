@@ -135,4 +135,35 @@ public class MessageUtil {
         }
         return map;
     }
+
+    /**
+     * 转换简单的xml to map
+     *
+     * @param inputStream is
+     * @return map
+     */
+    public static Map<String, String> convertToMap(InputStream inputStream) {
+        Map<String, String> map = new LinkedHashMap<>();
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document document = db.parse(inputStream);
+
+            Element root = document.getDocumentElement();
+            if (root != null) {
+                NodeList childNodes = root.getChildNodes();
+                if (childNodes != null && childNodes.getLength() > 0) {
+                    for (int i = 0; i < childNodes.getLength(); i++) {
+                        Node node = childNodes.item(i);
+                        if (node != null && node.getNodeType() == Node.ELEMENT_NODE) {
+                            map.put(node.getNodeName(), node.getTextContent());
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
 }

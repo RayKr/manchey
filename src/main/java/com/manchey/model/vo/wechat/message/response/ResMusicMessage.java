@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.BaseMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -31,23 +31,23 @@ public class ResMusicMessage extends BaseMessage {
     @XmlAccessorType(XmlAccessType.FIELD)
     public static class Music {
         @XmlElement(name = "Title")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String title; // 音乐标题
 
         @XmlElement(name = "Description")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String description; // 音乐描述
 
         @XmlElement(name = "MusicUrl")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String musicUrl; // 音乐链接
 
         @XmlElement
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String HQmusicUrl; // 高质量音乐链接，WIFI环境优先使用该链接播放音乐
 
         @XmlElement(name = "ThumbMediaId")
-        @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+        @XmlJavaTypeAdapter(AdapterCDATA.class)
         private String thumbMediaId; // 缩略图的媒体id，通过素材管理中的接口上传多媒体文件，得到的id
 
         public String getTitle() {

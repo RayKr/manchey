@@ -1,7 +1,7 @@
 package com.manchey.model.vo.wechat.message.response;
 
 import com.manchey.model.vo.wechat.message.BaseMessage;
-import com.manchey.utils.wechat.AdapterStringCDATA;
+import com.manchey.utils.wechat.AdapterCDATA;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class ResTextMessage extends BaseMessage {
 
     @XmlElement(name = "Content")
-    @XmlJavaTypeAdapter(AdapterStringCDATA.class)
+    @XmlJavaTypeAdapter(AdapterCDATA.class)
     private String content;
 
     public String getContent() {
