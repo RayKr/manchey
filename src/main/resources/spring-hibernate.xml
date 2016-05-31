@@ -66,9 +66,6 @@
                 <prop key="hibernate.current_session_context_class">
                     org.springframework.orm.hibernate5.SpringSessionContext
                 </prop>
-                <!--配置数据库信息，让IDEA可以ORM从表映射出Object-->
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/manchey</prop>
-                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>
         <!--指定hibernate实体类包-->
