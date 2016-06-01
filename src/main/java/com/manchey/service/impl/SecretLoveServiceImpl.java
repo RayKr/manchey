@@ -29,6 +29,7 @@ public class SecretLoveServiceImpl implements SecretLoveService {
 
         // 记录用户角色信息
         TRole role = new TRole();
+        role.setWechatId(roleInfo.getWechatId());
         role.setRoleName(roleInfo.getRoleName());
         role.setServerCode(roleInfo.getServerCode());
         role.setLevel(roleInfo.getLevel());
@@ -37,8 +38,17 @@ public class SecretLoveServiceImpl implements SecretLoveService {
     }
 
     @Override
-    public void bindLover() {
+    public void bindLover(RoleInfo roleInfo) throws RoleInfoException {
+        // 验证信息正确性
+        roleInfo = checkRoleService.checkRoleCorrect(roleInfo);
 
+        // 记录用户角色信息
+        TRole role = new TRole();
+        role.setRoleName(roleInfo.getRoleName());
+        role.setServerCode(roleInfo.getServerCode());
+        role.setLevel(roleInfo.getLevel());
+
+        tRoleDao.save(role);
     }
 
     @Override

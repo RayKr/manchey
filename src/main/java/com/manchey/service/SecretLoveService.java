@@ -13,7 +13,7 @@ public interface SecretLoveService {
     void bindMySelf(RoleInfo roleInfo) throws RoleInfoException;
 
     // 绑定暗恋目标信息
-    void bindLover();
+    void bindLover(RoleInfo roleInfo) throws RoleInfoException;
 
     // 接受密语并处理，返回处理结果
     String post();

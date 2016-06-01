@@ -6,6 +6,8 @@ package com.manchey.model.vo.wechat;
  */
 public class RoleInfo {
 
+    private String wechatId; // 微信ID
+
     private Integer regionCode; // 大区代码
 
     private String regionName; // 大区
@@ -44,6 +46,14 @@ public class RoleInfo {
         this.roleName = roleName;
         this.level = level;
         this.unit = unit;
+    }
+
+    public String getWechatId() {
+        return wechatId;
+    }
+
+    public void setWechatId(String wechatId) {
+        this.wechatId = wechatId;
     }
 
     public Integer getRegionCode() {
