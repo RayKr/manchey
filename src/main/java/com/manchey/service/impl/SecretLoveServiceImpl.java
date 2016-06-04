@@ -5,7 +5,7 @@ import com.manchey.exception.RoleInfoException;
 import com.manchey.model.po.TRole;
 import com.manchey.model.vo.wechat.RoleInfo;
 import com.manchey.service.SecretLoveService;
-import com.manchey.support.CheckRoleService;
+import com.manchey.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

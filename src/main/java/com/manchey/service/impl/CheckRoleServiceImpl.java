@@ -1,4 +1,4 @@
-package com.manchey.support.impl;
+package com.manchey.service.impl;
 
 import com.manchey.dao.BaseDao;
 import com.manchey.exception.RoleInfoException;
@@ -6,7 +6,7 @@ import com.manchey.model.po.TRegion;
 import com.manchey.model.po.TRole;
 import com.manchey.model.po.TServer;
 import com.manchey.model.vo.wechat.RoleInfo;
-import com.manchey.support.CheckRoleService;
+import com.manchey.service.CheckRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

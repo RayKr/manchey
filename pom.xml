@@ -35,11 +35,25 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
+        <!--  Java接口和实体类  -->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>com.manchey.mapper</targetMapperPackage>
+        <targetModelPackage>com.manchey.model.po</targetModelPackage>
+        <!--  XML生成路径  -->
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <targetXMLPackage>mapper</targetXMLPackage>
+
+        <!--  编译jdk版本  -->
+        <jdk.version>1.7</jdk.version>
+
+        <!--  依赖版本  -->
         <spring.version>4.2.6.RELEASE</spring.version>
         <struts.version>2.5</struts.version>
         <hibernate.version>5.0.9.Final</hibernate.version>
         <mybatis.version>3.4.0</mybatis.version>
+        <mybatis-generator.version>1.3.2</mybatis-generator.version>
+        <mapper.version>3.3.6</mapper.version>
         <aspectj.version>1.8.9</aspectj.version>
         <dbcp.version>1.4</dbcp.version>
         <pool.version>1.6</pool.version>
@@ -53,7 +67,6 @@
     </properties>
 
     <dependencies>
-        <!-- framworks -->
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -115,7 +128,7 @@
             <version>${pool.version}</version>
         </dependency>
 
-        <!-- mybatis -->
+        <!-- mapper -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -125,6 +138,11 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${mybatis-generator.version}</version>
         </dependency>
 
         <!-- dirvers -->
@@ -155,6 +173,7 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+        <!-- log4j -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -175,9 +194,36 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>utf-8</encoding>
                 </configuration>
+            </plugin>
+            <!-- mapper-generator-maven-plugin -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator.version}</version>
+                <!-- 默认配置文件/resources/generatorConfig.xml,可自定义路径 -->
+                <!--<configuration>-->
+                    <!--<configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>-->
+                    <!--<overwrite>true</overwrite>-->
+                    <!--<verbose>true</verbose>-->
+                <!--</configuration>-->
+                <!-- 依赖 -->
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <!-- 通用mapper3 -->
+                    <!--<dependency>-->
+                        <!--<groupId>tk.mybatis</groupId>-->
+                        <!--<artifactId>mapper</artifactId>-->
+                        <!--<version>${mapper.version}</version>-->
+                    <!--</dependency>-->
+                </dependencies>
             </plugin>
         </plugins>
     </build>

@@ -1,4 +1,4 @@
-package com.manchey.support;
+package com.manchey.service;
 
 import com.manchey.exception.RoleInfoException;
 import com.manchey.model.vo.wechat.RoleInfo;

@@ -2,7 +2,7 @@ package com.manchey.service.support;
 
 import com.manchey.model.vo.wechat.RoleInfo;
 import com.manchey.service.UserServiceI;
-import com.manchey.support.CheckRoleService;
+import com.manchey.service.CheckRoleService;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
