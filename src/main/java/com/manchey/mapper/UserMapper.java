@@ -1,6 +1,6 @@
 package com.manchey.mapper;
 
-import com.manchey.model.vo.mcos.Operator;
+import com.manchey.model.vo.mcos.VOperator;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository("userMapper")
 public interface UserMapper {
     @Select("select * from operator where operno = #{operno} and password = #{password}")
-    Operator getOperator(@Param("operno") String operno, @Param("password") String password);
+    VOperator getOperator(@Param("operno") String operno, @Param("password") String password);
 }

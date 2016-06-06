@@ -4,7 +4,7 @@ package com.manchey.model.vo.mcos;
  * 管理员实体
  * Created by Ray on 2016/6/1.
  */
-public class Operator {
+public class VOperator {
 
     private String operno;
 
