@@ -17,17 +17,10 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
-        <!-- 去除自动生成的时间戳 -->
-        <commentGenerator>
-            <!-- 保留注释的目的是保留@mbggenerated标示，这样在重新生成的时候会删除掉原来的，不会导致重复 -->
-            <!-- 时间戳建议去除，这样不会在每次生成的时候都要提交版本 -->
-            <property name="suppressDate" value="true" />
-        </commentGenerator>
-
         <!-- 使用通用mapper3插件 -->
-        <!--<plugin type="${mapper.plugin}">-->
-            <!--<property name="mappers" value="${mapper.Mapper}"/>-->
-        <!--</plugin>-->
+        <plugin type="${mapper.plugin}">
+            <property name="mappers" value="${mapper.Mapper}"/>
+        </plugin>
 
         <!-- 数据库连接配置 -->
         <jdbcConnection driverClass="${jdbc.driverClass}"

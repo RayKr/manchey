@@ -87,9 +87,8 @@
     </bean>
 
     <!-- MapperScannerConfigurer, 查找路径下所有接口，自动创建为MapperFactoryBean -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.manchey.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <!--注册SqlSessionTemplate,sqlSession可以直接在DAO层注入-->
