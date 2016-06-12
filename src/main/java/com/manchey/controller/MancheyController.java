@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +28,18 @@ public class MancheyController {
         if (!loginService.checkLogin(request.getParameter("operno"), request.getParameter("password"))) {
             map.addAttribute("msg", "账号或密码错误，请重新输入");
             return "";
+        }
+
+        return "index";
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @ResponseBody
+    public String loginCheck1(ModelMap map) {
+
+        if (!loginService.checkLogin(request.getParameter("operno"), request.getParameter("password"))) {
+            map.addAttribute("msg", "账号或密码错误，请重新输入");
+            return "index";
         }
 
         return "index";

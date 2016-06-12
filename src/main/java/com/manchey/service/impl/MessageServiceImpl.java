@@ -65,15 +65,20 @@ public class MessageServiceImpl implements MessageService {
 
         } else if (RegexUtil.matches(regexTarget, msgHead)) { // 指定目标
 
+            // 验证数据格式
             if (!RegexUtil.matches(regexBodyTarget, msgBody)) {
                 throw new RoleInfoException("请输入正确的大区、服务器名、角色名、目标昵称（可选），用\"\\+\"或\"\\-\"或空格连接！");
             }
-
             List<String> list = RegexUtil.find(regexBody, msgBody);
-
             if (list.get(2).length() > 6) {
                 throw new RoleInfoException("角色名长度不符合系统规定！");
             }
+
+            // 创建关联关系记录
+
+
+
+
 
             RoleInfo roleInfo = new RoleInfo(list.get(0), list.get(1), list.get(2), list.get(3));
 
