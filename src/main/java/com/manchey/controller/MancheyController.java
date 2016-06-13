@@ -27,7 +27,7 @@ public class MancheyController {
 
         if (!loginService.checkLogin(request.getParameter("operno"), request.getParameter("password"))) {
             map.addAttribute("msg", "账号或密码错误，请重新输入");
-            return "";
+            return "error";
         }
 
         return "index";
@@ -36,13 +36,7 @@ public class MancheyController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     @ResponseBody
     public String loginCheck1(ModelMap map) {
-
-        if (!loginService.checkLogin(request.getParameter("operno"), request.getParameter("password"))) {
-            map.addAttribute("msg", "账号或密码错误，请重新输入");
-            return "index";
-        }
-
-        return "index";
+        return "请登录后再操作！";
     }
 
 }

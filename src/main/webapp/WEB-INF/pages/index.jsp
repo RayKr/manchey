@@ -139,17 +139,6 @@
 
         $(function () {
 
-            loginDialog = $('#loginDialog').dialog({
-                closable: false,
-                modal: true,
-                buttons: [{
-                    text: '登录',
-                    handler: function () {
-                        console.info("点击登录")
-                    }
-                }]
-            });
-
             openPwd();
 
             $('#editpass').click(function () {
@@ -191,21 +180,6 @@
          style="position:absolute; top:50%; left:50%; margin:-120px 0px 0px -120px; text-align:center;  border:2px solid #8DB2E3; width:200px; height:40px;  font-size:14px;padding:10px; font-weight:bold; background:#fff; color:#15428B;">
         <img src="/resources/images/loading.gif" align="absmiddle"/> 正在加载中,请稍候...
     </div>
-</div>
-
-<div id="loginDialog" title="管理员登录" style="width: 230px; height: 140px">
-    <form action="index" method="post">
-        <table>
-            <tr>
-                <td align="right">用户名</td>
-                <td><input type="text" name="operno"></td>
-            </tr>
-            <tr>
-                <td align="right">密码</td>
-                <td><input type="password" name="password"></td>
-            </tr>
-        </table>
-    </form>
 </div>
 
 <div region="north" split="true" border="false" style="overflow: hidden; height: 50px;
