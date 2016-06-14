@@ -30,7 +30,7 @@ public class MancheyController {
             return "error";
         }
 
-        return "index";
+        return "home/index";
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
